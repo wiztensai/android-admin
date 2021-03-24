@@ -27,6 +27,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Del"
+        android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintEnd_toStartOf="@+id/btnEdit"
         app:layout_constraintTop_toTopOf="parent" />
 

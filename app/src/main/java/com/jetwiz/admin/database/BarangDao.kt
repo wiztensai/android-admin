@@ -12,6 +12,9 @@ interface BarangDao {
     @Query("DELETE FROM barang WHERE id=:id")
     suspend fun deleteById(id:Int):Int
 
+    @Update
+    suspend fun updateBarang(d: ModelBarang)
+
     @Delete
     suspend fun deleteMultiBarang(list:MutableList<ModelBarang>)
 

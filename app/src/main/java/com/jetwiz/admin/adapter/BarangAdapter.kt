@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.jetwiz.admin.A_Main
 import com.jetwiz.admin.ModelBarang
 import com.jetwiz.admin.R
+import com.jetwiz.admin.contracts.TambahEditBarangListener
 import com.jetwiz.admin.database.DB_General
+import com.jetwiz.admin.dialog.DF_TambahEditBarang
 import kotlinx.coroutines.*
 import wazma.punjabi.helper.H_Coroutine
 
@@ -55,7 +58,16 @@ class BarangAdapter(private val dataSet: MutableList<ModelBarang>):RecyclerView.
             }
         }
         holder.btnEdit.setOnClickListener {
+            DF_TambahEditBarang(object : TambahEditBarangListener {
+                override fun onAdd() {
+                    // nothing
+                }
 
+                override fun onEdit(modelBarang: ModelBarang) {
+                    dataSet[position] = modelBarang
+                    notifyDataSetChanged()
+                }
+            }, dataSet[position]).show(A_Main.instance.supportFragmentManager, null)
         }
     }
 
